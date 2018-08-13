@@ -1,24 +1,38 @@
 const path = require('path'),
       HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, 'source/index.js'),
+  entry: path.join(__dirname, 'src/index.js'),
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   plugins: [
+    new ExtractTextPlugin('dist/style.css'),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, 'source/index.html')
+      template: path.join(__dirname, 'src/index.html')
     })
   ],
   module: {
     rules: [
-      {test: /\.css$/, use: ['style-loader', 'css-loader']}
+      {test: /\.js$/,
+       exclude: /node_modules/,
+       use: 'babel-loader'
+      },
+      {
+        test: /\.(css|sass|scss)$/,
+        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!resolve-url-loader!sass-loader' })
+      },
+      {
+      test: /\.(png|jpg)$/,
+      loader: 'url-loader'
+      }
     ]
   },
   devServer: {
+    contentBase: path.join(__dirname, 'dist'),
     port: 3000,
     proxy: {
       "/api/*": {

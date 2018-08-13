@@ -25,7 +25,7 @@ We have created a simple [NodeJS](https://nodejs.org) application which:
 1. Bundles your source code and serves it through http://localhost:3000/
 2. Provides **mock** data through http://localhost:3000/api/
 
-Your challenge is to build something interesting that makes use of the mock data provided. 
+Your challenge is to build something interesting that makes use of the mock data provided.
 
 You can choose whichever technologies you like to create this application. Feel
 free to make changes to _any_ of the files in this repository, or to swap out
@@ -129,6 +129,41 @@ http://localhost:3000/api/partners/acme/bodies/female
 ```
 
 ## Your Notes Go Here
+Hi
+
+ I focused more on the UI aspect than frontend coding. The idea behind the project is to give users a real shopping experience as if they were physically in the store. The website is not functional but its a small example how user would like to navigate when they first land on the page.
+
+ The website is divided into small segments starting wit
+#### Header:
+  I added an image in the background which might make it look like a retail store but its a place holder for something eye catching for the user. The Take tour button will drag you to the tour section.
+
+#### Feature section:
+  It's a template for them see a quick overview about the app and they can click on Learn more link to view details.
+
+#### Partners section:
+  I used Partners API to retrieve the names, links and thumbnails.
+
+#### Tour section:
+  As a user, I would like to quickly skim through what i'm looking for so I categorized male and female cards. A hover over flips the card into it's respective accessory options. Click on the link will open a model which is a dummy template to start using the app.  
+
+Shouldn't the endpoint for bodies/gender be categorized with what clothing the user is looking for? And then and object with measurements for the clothing type.
+
+I just created an array for the clothing list that could be a response object of the gender bodies endpoint.
+
+#### On the UI:
+    I used CSS3 and SASS for UI, animations, popup and responsiveness. The SASS architecture is based on the UI components and made use of reusable components.
+
+#### Front end:
+
+   I didn't focus much on front end and used React to divide UI components into one parent app.js and rest as children components where the information flows unidirectional way.
+
+#### Limitations:
+
+  1.  I didn't make much use of the API. I would have focused next on calling all endpoints to for the tour section and build setting configuration for users to use the app. I wasn't sure how I would use each body part measurement unless I integrated 3d libraries like three.js.
+  2. The navigation bar is missing on the website. I would have built a side navigation for users to go through different pages/section.
+  3. The website, is not functional and more of a template.
+  4. Compress images.
+  5. Unit testing. 
 
 ## License
 
